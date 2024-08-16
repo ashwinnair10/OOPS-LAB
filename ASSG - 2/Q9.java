@@ -21,22 +21,22 @@ public class Q9 {
     }
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        Q8 o=new Q8();
+        Q9 o=new Q9();
         System.out.println("Enter no. of teachers: ");
         int tn=sc.nextInt();
         sc.nextLine();
-        ArrayList<Q8.Teacher> teachers=new ArrayList<Q8.Teacher>();
+        ArrayList<Q9.Teacher> teachers=new ArrayList<Q9.Teacher>();
         for(int i=0;i<tn;i++){
             String k;
             System.out.println("Enter teacher "+(i+1)+":");
             k=sc.nextLine();
-            Q8.Teacher t=o.new Teacher(k,i);
+            Q9.Teacher t=o.new Teacher(k,i);
             teachers.add(t);
         }
         System.out.println("Enter no. of Students: ");
         int sn=sc.nextInt();
         //Q8.Student students[]=new Q8.Student[sn];
-        ArrayList<Q8.Student> students=new ArrayList<Q8.Student>();
+        ArrayList<Q9.Student> students=new ArrayList<Q9.Student>();
         for(int i=0;i<sn;i++){
             String k;
             sc.nextLine();
@@ -54,13 +54,13 @@ public class Q9 {
             }
             System.out.println("Choose teacher by ID:");
             int inp=sc.nextInt();
-            Q8.Student s=o.new Student(k,teachers.get(inp-1).name,roll,h,w);
+            Q9.Student s=o.new Student(k,teachers.get(inp-1).name,roll,h,w);
             students.add(s);
         }
         for(int i=0;i<sn;i++){
             for(int j=i+1;j<sn;j++){
                 if(students.get(i).height>students.get(j).height){
-                    Q8.Student temp=students.get(i);
+                    Q9.Student temp=students.get(i);
                     students.set(i,students.get(j));
                     students.set(j,temp);
                 }
