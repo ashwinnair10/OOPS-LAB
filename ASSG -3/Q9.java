@@ -30,7 +30,6 @@ public class Q9{
         System.out.println("Balance: "+o.balance);
         o.addInterest();
         System.out.println("Balance: "+o.balance);
-        //Subclass cannot access private fields of super class
         return;
     }
 }
