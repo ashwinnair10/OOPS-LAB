@@ -31,17 +31,28 @@ class ElectionPost implements SortVotes{
         }
     }
     public void ascendDisplay(){
-        ArrayList<String> a=new ArrayList<String>(map.keySet());
-        Collections.sort(a);
-        for(int i=0;i<a.size();i++){
-            System.out.println(a.get(i)+" - "+map.get(a.get(i)));
+        List<Map.Entry<String, Integer> > list =
+               new LinkedList<Map.Entry<String, Integer> >(map.entrySet());
+        Collections.sort(list,new Comparator<Map.Entry<String, Integer> >() {
+            public int compare(Map.Entry<String, Integer> o1, 
+                               Map.Entry<String, Integer> o2)
+            {
+                return (o1.getValue()).compareTo(o2.getValue());
+            }
+        });
+        for(int i=0;i<list.size();i++){
+            System.out.println(list.get(i).getKey()+" - "+list.get(i).getValue());
         }
     }
     public void descendDisplay(){
-        ArrayList<String> a=new ArrayList<String>(map.keySet());
-        Collections.sort(a,Collections.reverseOrder());
-        for(int i=0;i<a.size();i++){
-            System.out.println(a.get(i)+" - "+map.get(a.get(i)));
+        List<Map.Entry<String,Integer>> list=new LinkedList<Map.Entry<String,Integer>>(map.entrySet());
+        Collections.sort(list,new Comparator<Map.Entry<String, Integer>>(){
+            public int compare(Map.Entry<String, Integer> o1,Map.Entry<String,Integer> o2){
+                return (o2.getValue()).compareTo(o1.getValue());
+            }
+        });
+        for(int i=0;i<list.size();i++){
+            System.out.println(list.get(i).getKey()+" - "+list.get(i).getValue());
         }
     }
 }
