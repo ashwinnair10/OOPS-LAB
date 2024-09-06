@@ -55,6 +55,11 @@ class VehicleSystem{
         vehicles.add(v);
     }
     void display(){
+        Collections.sort(vehicles,new Comparator<Vehicle>() {
+            public int compare(Vehicle v1,Vehicle v2){
+                return v1.tax<v2.tax?1:-1;
+            }
+        });
         for(int i=0;i<vehicles.size();i++)
         vehicles.get(i).displayDetails();
     }
