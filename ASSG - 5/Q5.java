@@ -3,22 +3,20 @@ interface OrderStudents{
     void OrderByRollNo();
     void OrderByName();
 }
-class Student{
+class Student implements OrderStudents{
     String name,address;
     int rollno;
+    ArrayList<Student> students=new ArrayList<>();
     Student(String n,int r,String a){
         name=n;
         address=a;
         rollno=r;
     }
-    void displayDetails(){
-        System.out.println(rollno+" "+name+" "+address);
-    }
-}
-class Students implements OrderStudents{
-    ArrayList<Student> students=new ArrayList<>();
     void addStudent(Student s){
         students.add(s);
+    }
+    void displayDetails(){
+        System.out.println(rollno+" "+name+" "+address);
     }
     void display(){
         for(int i=0;i<students.size();i++){
@@ -48,7 +46,7 @@ public class Q5{
         int n=sc.nextInt();
         int r;
         String na,a;
-        Students s=new Students();
+        Student s=new Student("",0,"");
         while((n--)>0){
             r=sc.nextInt();
             na=sc.next();
