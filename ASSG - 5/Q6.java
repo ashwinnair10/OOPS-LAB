@@ -44,10 +44,10 @@ class ReferenceBooks extends Book{
         super(bi,t,a);
     }
     public void checkIn(String user){
-        System.out.println("Invalid");
+        System.out.println("Cannot be borrowed");
     }
     public void checkOut(){
-        System.out.println("Cannot be borrowed");
+        System.out.println("Invalid");
     }
     @Override
     void display(){
