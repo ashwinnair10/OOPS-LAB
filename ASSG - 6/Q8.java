@@ -1,8 +1,7 @@
-//correct this code- change event to interface
 import java.util.*;
 interface Event{
-    abstract String getEventName();
-    abstract void displayDetails();
+    String getEventName();
+    void displayDetails();
     int getAvailableTickets();
     void bookTickets(int t);
     void cancelTickets(int t);
@@ -37,7 +36,7 @@ class Concert implements Event{
     }
     public void cancelTickets(int t){
         if(availableTickets+t>totalTickets){
-            System.out.println("Invalid");
+            System.out.println("Entered number of tickets cannot be cancelled");
             return;
         }
         availableTickets+=t;
@@ -74,7 +73,7 @@ class TheaterPlay implements Event{
     }
     public void cancelTickets(int t){
         if(availableTickets+t>totalTickets){
-            System.out.println("Invalid");
+            System.out.println("Entered number of tickets cannot be cancelled");
             return;
         }
         availableTickets+=t;
