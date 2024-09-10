@@ -1,20 +1,33 @@
 //correct this code- change event to interface
 import java.util.*;
-abstract class Event{
+interface Event{
+    abstract String getEventName();
+    abstract void displayDetails();
+    int getAvailableTickets();
+    void bookTickets(int t);
+    void cancelTickets(int t);
+}
+class Concert implements Event{
     String eventName;
     int totalTickets;
     int availableTickets;
-    Event(String e,int t){
+    String performer;
+    Concert(String e,int t,String p){
         eventName=e;
         totalTickets=t;
         availableTickets=t;
+        performer=p;
     }
-    abstract String getEventName();
-    abstract void displayDetails();
-    int getAvailableTickets(){
-        return totalTickets;
+    public String getEventName(){
+        return eventName;
     }
-    void bookTickets(int t){
+    public void displayDetails(){
+        System.out.println("Event Name: "+eventName+" Performer: "+performer+" Total Tickets: "+totalTickets+" Available Tickets: "+availableTickets);
+    }
+    public int getAvailableTickets(){
+        return availableTickets;
+    }
+    public void bookTickets(int t){
         if(t>availableTickets){
             System.out.println("Requested number of tickets unavailable");
             return;
@@ -22,7 +35,7 @@ abstract class Event{
         availableTickets-=t;
         System.out.println("Tickets booked successfully");
     }
-    void cancelTickets(int t){
+    public void cancelTickets(int t){
         if(availableTickets+t>totalTickets){
             System.out.println("Invalid");
             return;
@@ -31,44 +44,78 @@ abstract class Event{
         System.out.println("Tickets cancelled successfully");
     }
 }
-class Concert extends Event{
-    String performer;
-    Concert(String e,int t,String p){
-        super(e,t);
-        performer=p;
-    }
-    String getEventName(){
-        return eventName;
-    }
-    void displayDetails(){
-        System.out.println("Event Name: "+eventName+" Performer: "+performer+" Total Tickets: "+totalTickets+" Available Tickets: "+availableTickets);
-    }
-}
-class TheaterPlay extends Event{
+class TheaterPlay implements Event{
+    String eventName;
+    int totalTickets;
+    int availableTickets;
     String director;
     TheaterPlay(String e,int t,String d){
-        super(e,t);
+        eventName=e;
+        totalTickets=t;
+        availableTickets=t;
         director=d;
     }
-    String getEventName(){
+    public String getEventName(){
         return eventName;
     }
-    void displayDetails(){
+    public void displayDetails(){
         System.out.println("Event Name: "+eventName+" Director: "+director+" Total Tickets: "+totalTickets+" Available Tickets: "+availableTickets);
     }
+    public int getAvailableTickets(){
+        return availableTickets;
+    }
+    public void bookTickets(int t){
+        if(t>availableTickets){
+            System.out.println("Requested number of tickets unavailable");
+            return;
+        }
+        availableTickets-=t;
+        System.out.println("Tickets booked successfully");
+    }
+    public void cancelTickets(int t){
+        if(availableTickets+t>totalTickets){
+            System.out.println("Invalid");
+            return;
+        }
+        availableTickets+=t;
+        System.out.println("Tickets cancelled successfully");
+    }
 }
-class SportsGame extends Event{
+class SportsGame implements Event{
+    String eventName;
+    int totalTickets;
+    int availableTickets;
     String teamNames;
     SportsGame(String e,int t,String s){
-        super(e,t);
         eventName=e;
+        totalTickets=t;
+        availableTickets=t;
         teamNames=s;
     }
-    String getEventName(){
+    public String getEventName(){
         return eventName;
     }
-    void displayDetails(){
+    public void displayDetails(){
         System.out.println("Event Name: "+eventName+" TeamNames: "+teamNames+" Total Tickets: "+totalTickets+" Available Tickets: "+availableTickets);
+    }
+    public int getAvailableTickets(){
+        return availableTickets;
+    }
+    public void bookTickets(int t){
+        if(t>availableTickets){
+            System.out.println("Requested number of tickets unavailable");
+            return;
+        }
+        availableTickets-=t;
+        System.out.println("Tickets booked successfully");
+    }
+    public void cancelTickets(int t){
+        if(availableTickets+t>totalTickets){
+            System.out.println("Entered number of tickets cannot be cancelled");
+            return;
+        }
+        availableTickets+=t;
+        System.out.println("Tickets cancelled successfully");
     }
 }
 class EventManager{
